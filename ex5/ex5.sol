@@ -27,7 +27,11 @@ contract ex5 is ERC20 {
         // ERC20은
         // 기본적인 decimals가 18로 잡혀있기 때문에
         // 1ether를 보내려면 10^18을 곱해서 보내주어야 한다.
-        _mint(msg.sender, _totalSupply * 10**18);
+        _mint(msg.sender, _totalSupply * 10**1);
+    }
+
+    function decimals() public pure override returns (uint8) {
+        return 1;
     }
 
     /*
@@ -58,4 +62,11 @@ transferFrom
  - spender : 대리 송금자
 -> 대리송금후에는 allownance가 줄어든다.
 -> 대리송금자는 자신의 가스비가 든다는 것이 함정~
+*/
+
+/*
+eth Decimals 18, 10 000000000000000000
+D_One Decimals 1, 10 0 ( = 10 개 D_One )
+D_One Decimals 2, 10 00 ( = 10 개 D_One )
+D_One Decimals 3, 10 000( = 10 개 D_One )
 */
